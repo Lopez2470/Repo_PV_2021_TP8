@@ -14,12 +14,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unju.fi.tp8.model.Compra;
 import ar.edu.unju.fi.tp8.model.Producto;
 import ar.edu.unju.fi.tp8.service.ICompraService;
 import ar.edu.unju.fi.tp8.service.IProductoService;
+
 
 @Controller
 public class CompraController {
@@ -69,8 +71,14 @@ public class CompraController {
 		if (compraService.obtenerCompras()==null) {
 			compraService.generarTablaCompra();
 		}
-		modelView.addObject("compras", compraService.obtenerCompras());
-		return modelView;		
+		modelView.addObject("compras-listado", compraService.obtenerCompras());
+		return modelView;
+		
+		/*public String getListadoCompraPage(Model model) {
+			model.addAttribute("compra", compra);
+			model.addAttribute("compras", compraService.getCompras());
+			return "compras";
+		*/		
 	}
 	
 	@GetMapping("/compra/editar/{id}")
@@ -79,14 +87,28 @@ public class CompraController {
 		Optional<Compra> compra = compraService.getCompraPorId(id);
 		modelView.addObject("compra",compra);
 		modelView.addObject("productos", productoService.getAllProductos());
+		
 		return modelView;
 	}
-		
+	
+
 	@GetMapping("/compra/eliminar/{id}")
-	public ModelAndView getCompraEliminar(@PathVariable(value = "id") Long id){
-		compraService.eliminarCompra(id);
+	public ModelAndView getCompraliminar(@PathVariable(value = "id") Long id){
 		ModelAndView modelView = new ModelAndView("redirect:/compras/listado");
-		
+		compraService.eliminarCompra(id);
 		return modelView;
 	}
+	
+	
+	
+	@GetMapping("/compra/busqueda")
+	public String buscarProductoPorFiltro(@RequestParam(name = "producto.nombre")String prod_nombre, 
+			@RequestParam(name = "total")double comp_total, Model model, @ModelAttribute(name = "compra")Compra compra) {
+		//model.addAttribute("compra");
+		model.addAttribute("compras", compraService.obtenerCompras());
+		model.addAttribute("compras", compraService.buscarCompras(prod_nombre, comp_total));
+		return "compras-listado";
+	}
+	
+
 }
