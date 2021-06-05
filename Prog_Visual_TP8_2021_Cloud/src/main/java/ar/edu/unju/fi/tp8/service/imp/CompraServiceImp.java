@@ -39,6 +39,14 @@ public class CompraServiceImp implements ICompraService {
 
 	@Override
 	public void eliminarCompra(Long id) {
-		// TODO Auto-generated method stub	
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public List<Compra> buscarCompras(String prod_nombre, double comp_total) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
+
