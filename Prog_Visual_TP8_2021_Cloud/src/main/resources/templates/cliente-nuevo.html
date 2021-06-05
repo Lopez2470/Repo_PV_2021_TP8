@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<title>Cliente Nuevo</title>
+		<link rel="stylesheet" type="text/css" th:href=@{/webjars/bootstrap/4.6.0/css/bootstrap.min.css}>
+		<link rel="stylesheet" type="text/css" th:href="@{/css/miestilo.css}">
+	</head>
+	<body>
+		<div class="container">
+			<header th:replace="layout/header :: header"></header>		
+			<div class="row ">
+				<section class=" col-md-9 bg-light">
+					<h3 class="text-center">FORMULARIO DE ALTA DE CLIENTES</h3>
+					<form th:action="@{/cliente/guardar}" th:method="post" th:object="${cliente}">
+						<input type="hidden" th:field="*{id}"/>
+						<input type="hidden" th:field="*{cuenta.id}"/>		
+						<div class="form-group row">
+							<label class="col-sm-3 col-form-label" for="txttipodedocumento">Tipo de Documento</label>
+							<select class="custom-select col-sm-3 col-form-label" id="txttipodedocumento" 
+									th:field="*{tipoDocumento}">
+							    
+							    <option value="pasaporte">Pasaporte</option>
+							    <option value="documento">Documento</option>
+						</select>	
+						</div>
+												
+						<div class="form-group row">
+							<label for="nroDocumento" class="col-sm-3 col-form-label">Numero Doc.</label>
+							<div class="col-sm-5">
+								<input type="number" class="form-control" id="nroDocumento" th:field="*{nroDocumento}" step="any">
+							</div>
+						</div>
+						
+						<div class="form-group row">
+							<label for="txtnombreApellido" class="col-sm-3 col-form-label">Nombres y Apellido</label>
+							<div class="col-sm-9">
+						    	<input type="text" class="form-control" id="txtnombreApellido" th:field="*{apellidoNombre}"
+						    		    placeholder="Ingrese un nombre y apellido...">
+						    </div>
+          				</div>
+						
+						<div class="form-group row">
+						      <label for="inputemail" class="col-sm-3 col-form-label">Email</label>
+						      <div class="col-sm-9">
+							      <input type="email" class="form-control" id="inputemail" th:field="*{email}"
+							      		 placeholder="Ingrese un e-mail...">
+							   </div>    		 
+						</div>
+						
+						<div class="form-group row">
+					      <label for="inputpassword" class="col-sm-3 col-form-label">Contraseña</label>
+					      <div class="col-sm-9">
+						      <input type="password" class="form-control" id="inputpassword" th:field="*{password}"
+						      		 placeholder="Ingrese un password...">
+						  </div> 
+					    </div>
+						
+						<div class="form-group row">
+							<label for="txtfechaNacimiento" class="col-sm-3 col-form-label">Fecha de Nacimiento</label>
+							<div class="col-sm-7">
+						    	<input type="date" class="form-control" id="txtfechaNacimiento" th:field="*{fechaNacimiento}"
+						    		    placeholder="Ingrese un nombre y apellido...">
+						    </div>
+          				</div>
+						
+						<div class="form-group row">
+							<label for="txtcodarea" class="col-sm-3 col-form-label">Codigo Area</label>
+							<div class="col-sm-7">
+								<input type="number" class="form-control" id="txtcodarea" th:field="*{codigoAreaTelefono}" step="any">
+							</div>
+						</div>
+						
+						<div class="form-group row">
+							<label for="txtnroTelefono" class="col-sm-3 col-form-label">Numero Telefono</label>
+							<div class="col-sm-7">
+								<input type="number" class="form-control" id="txtnroTelefono" th:field="*{nroTelefono}" step="any">
+							</div>
+						</div>
+						
+						<div class="form-group row">
+							<label for="txtfechaUltimaCompra" class="col-sm-3 col-form-label">Fecha Ultima Compra</label>
+							<div class="col-sm-7">
+						    	<input type="date" class="form-control" id="txtfechaUltimaCompra" th:field="*{fechaUltimaCompra}"
+						    		    placeholder="Ingrese un nombre y apellido...">
+						    </div>
+          				</div>
+          				
+          				<!-- "CUENTAS" -->
+          				<div class="form-group row">
+							<label for="txtSaldo" class="col-sm-3 col-form-label">Saldo</label>
+							<div class="col-sm-7">
+								<input type="number" class="form-control" id="txtSaldo" th:field="*{cuenta.saldo}" step="any">
+							</div>
+						</div>
+          				
+          				<div class="form-group row">
+							<label for="txtfechaCreacion" class="col-sm-3 col-form-label">Fecha de Creacion</label>
+							<div class="col-sm-7">
+						    	<input type="date" class="form-control" id="txtfechaCreacion" th:field="*{cuenta.fechaCreacion}"
+						    		    placeholder="Ingrese un nombre y apellido...">
+						    </div>
+          				</div>
+          				
+          				<div class="form-group row">
+							<label class="col-sm-3 col-form-label" for="txtEstado">TEstado</label>
+							<select class="custom-select col-sm-3 col-form-label" id="txtEstado" 
+									th:field="*{cuenta.estado}">
+							    
+							    <option value="activa">Activae</option>
+							    <option value="inactiva">Inactiva</option>
+						</select>	
+						</div>
+						
+						<button type="submit" class="btn btn-outline-secondary">Guardar</button>
+					</form>
+				</section>
+				<aside th:replace="layout/publicidad :: publicidad"></aside>
+			</div>
+		</div>	
+				
+		<footer th:replace="layout/footer :: footer"></footer>
+	</body>
+</html>
