@@ -9,9 +9,12 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import ar.edu.unju.fi.tp8.model.Producto;
 
 @Component
 @Entity
@@ -19,13 +22,19 @@ import org.springframework.stereotype.Component;
 public class Compra {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Long id;
 	
+	@Min(value=1, message = "Ingresar valores superiores o igual a 1")
+	@Column(name = "com_codigo", nullable = false)
+	private int codigo;
+	
+	//@Valid
 	@Autowired
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "pro_id")
 	private Producto producto;
 	
+	@Min(value=1, message = "Valor minimo permitido es 1")
 	@Column(name = "com_cantidad", nullable = false)
 	private int cantidad;
 	
@@ -37,21 +46,30 @@ public class Compra {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Compra(int id, Producto producto, int cantidad, double total) {
+	public Compra(int codigo, Producto producto, int cantidad, double total) {
 		super();
-		this.id = id;
+		this.codigo = codigo;
 		this.producto = producto;
 		this.cantidad = cantidad;
 		this.total = total;
 	}
-
-	public int getId() {
+	
+	
+	public Long getId() {
 		return id;
 	}
 
-
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
+	}
+
+
+	public int getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(int codigo) {
+		this.codigo = codigo;
 	}
 
 
@@ -85,15 +103,14 @@ public class Compra {
 		this.total = total;
 	}
 
-
 	@Override
 	public String toString() {
-		return "Compra [id=" + id + ", producto=" + producto + ", cantidad=" + cantidad + ", total=" + total + "]";
+		return "Compra [id=" + id + ", codigo=" + codigo + ", producto=" + producto + ", cantidad=" + cantidad
+				+ ", total=" + total + "]";
 	}
-	/*
-	public double obtenerCalculoTotal() {
+
+	/*public double obtenerCalculoTotal() {
 		double total = cantidad*producto.getPrecio();
 		return total;
-	}
-	*/
+	}*/
 }

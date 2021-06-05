@@ -20,6 +20,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
+import ar.edu.unju.fi.tp8.model.Cuenta;
+
 @Component
 @Entity
 @Table(name = "CLIENTES")
@@ -193,8 +195,7 @@ public class Cliente {
 		int edadd = periodo.getYears();
 		return edadd;	
 	}	
-	
-	
+		
 	public String tDesdeUltimaCompra() {
 		LocalDate hoy = LocalDate.now();
 		Period periodo = Period.between(this.fechaUltimaCompra, hoy);
