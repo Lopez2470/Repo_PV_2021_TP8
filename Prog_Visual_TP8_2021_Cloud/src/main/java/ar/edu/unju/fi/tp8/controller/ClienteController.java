@@ -58,8 +58,7 @@ public class ClienteController {
 		modelView.addObject("clientes", clienteService.obtenerClientes());
 		return modelView;
 	}
-		
-		
+			
 	@GetMapping("/cliente/editar/{id}")
 	public ModelAndView getEditClientePage(@PathVariable(value = "id")Long id) {
 		ModelAndView modelView = new ModelAndView("cliente-nuevo");

@@ -14,6 +14,8 @@ import javax.persistence.Table;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
+import ar.edu.unju.fi.tp8.model.Cliente;
+
 @Component
 @Entity
 @Table(name = "CUENTAS")
@@ -85,6 +87,5 @@ public class Cuenta {
 		return "Cuenta [id=" + id + ", saldo=" + saldo + ", fechaCreacion=" + fechaCreacion + ", estado=" + estado
 				+ ", cliente=" + cliente + "]";
 	}
-
 }
 

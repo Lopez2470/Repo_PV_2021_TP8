@@ -8,8 +8,6 @@
 		<link rel="stylesheet" type="text/css" th:href="@{/css/miestilo.css}">		
 	</head>
 	<body>
-	
-	
 		<div class="container">
 			<header th:replace="layout/header :: header"></header>
 			<div class="row ">
@@ -21,25 +19,33 @@
 								<table class="table table-over table-dark" id="tbCompra">
 									<thead>
 										<tr>
-											<th>ID</th>
-											<th>PRODUCTO</th>
-											<th>NOM-PRODUCTO</th>
-											<th>CANTIDAD</th>
-											<th>TOTAL</th>
+											<th>Codigo</th>
+											<th>Producto</th>
+											<th>Nom-Producto</th>
+											<th>Precio-Producto</th>
+											<th>Cantidad</th>
+											<th>Total</th>
+											<th>Acciones</th>
 										</tr>
 									</thead>
 									<tbody>
 										<tr th:each="comp : ${compras}">
-											<td th:text="${comp.id}"></td>
+											<td th:text="${comp.codigo}"></td>
 											<td th:text="${comp.producto.codigo}"></td>
 											<td th:text="${comp.producto.nombre}"></td>
+											<td th:text="${comp.producto.precio}"></td>
 											<td th:text="${(comp.cantidad)}"></td>
 											<!-- <td th:text="${(comp.obtenerCalculoTotal())}"></td>  -->
 											<td th:text="${(comp.total)}"></td>
+											<td>
+												<a th:href="@{/compra/editar/}+${comp.id}" class="btn btn-warning">Editar</a>
+											</td>
+											<td>
+												<a th:href="@{/compra/eliminar/}+${comp.id}" class="btn btn-danger">Eliminar</a>
+											</td>				
 										</tr>
 									</tbody>
-								</table>
-								
+								</table>							
 							</div>
 				</section>
 				<aside th:replace="layout/publicidad :: publicidad"></aside>

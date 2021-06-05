@@ -18,8 +18,7 @@ public class ClienteServiceMysqlImp implements IClienteService{
 	
 	@Autowired
 	private IClienteRepository clienteRepository;
-	
-	
+		
 	@Override
 	public void guardarCliente(Cliente cliente) {
 		clienteRepository.save(cliente);	
@@ -29,7 +28,6 @@ public class ClienteServiceMysqlImp implements IClienteService{
 	public void generarTablaCliente() {
 		// TODO Auto-generated method stub	
 	}
-
 	
 	@Override
 	public List<Cliente> obtenerClientes() {
@@ -42,7 +40,6 @@ public class ClienteServiceMysqlImp implements IClienteService{
 		return cliente;
 	}
 	
-
 	@Override
 	public Cliente getClientePorDni(int nroDocumento) {
 		// Cliente cliente = clienteRepository.findByDni(nroDocumento);

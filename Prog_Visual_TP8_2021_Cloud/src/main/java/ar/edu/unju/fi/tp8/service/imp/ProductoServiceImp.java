@@ -10,6 +10,7 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import ar.edu.unju.fi.tp8.service.imp.ProductoServiceImp;
 import ar.edu.unju.fi.tp8.model.Producto;
 import ar.edu.unju.fi.tp8.service.IProductoService;
 import ar.edu.unju.fi.tp8.util.TablaProducto;
@@ -43,7 +44,6 @@ public class ProductoServiceImp implements IProductoService {
 		LOGGER.info("RESULT:" + productos.get(productos.size() -1));
 	}
 	
-
 	/*Se busca el ultimo objeto dado de alta*/
 	@Override
 	public Producto getUltimoProducto() {

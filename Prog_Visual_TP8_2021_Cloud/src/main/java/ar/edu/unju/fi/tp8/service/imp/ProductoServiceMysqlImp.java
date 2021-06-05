@@ -33,7 +33,6 @@ public class ProductoServiceMysqlImp implements IProductoService {
 		return null;
 	}
 	
-
 	@Override
 	public List<Producto> getAllProductos() {
 		List<Producto> productos = (List<Producto>) productoRepository.findAll();

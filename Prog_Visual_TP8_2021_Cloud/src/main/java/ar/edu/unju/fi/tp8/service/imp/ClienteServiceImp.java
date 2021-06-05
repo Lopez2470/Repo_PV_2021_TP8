@@ -13,7 +13,6 @@ import ar.edu.unju.fi.tp8.model.Cliente;
 import ar.edu.unju.fi.tp8.service.IClienteService;
 import ar.edu.unju.fi.tp8.util.TablaCliente;
 
-
 /*@Service("clienteUtilService")*/
 @Service("clienteServiceSimple")
 public class ClienteServiceImp implements IClienteService {
@@ -64,6 +63,5 @@ public class ClienteServiceImp implements IClienteService {
 	@Override
 	public void eliminarCliente(Long id) {
 		// TODO Auto-generated method stub
-		
 	}
 }
